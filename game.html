@@ -1,4 +1,35 @@
 <script>
+//program that guesses how many hours you've been alive
+  (function() {
+  var age = prompt('Please enter your age')
+  var answer = (age * 8760);
+  var guess = 0;
+  var promptText = 'Guess how many hours you\'ve been alive!';
+  var tooHigh = 'You guessed too high, guess lower';
+  var tooLow = 'You guessed to low, guess higher';
+    // console.log(answer);
+    while (guess != answer) {
+      guess = prompt(promptText);
+      if (guess > answer){
+        promptText = tooHigh;
+
+      }
+      if (guess < answer) {
+        promptText = tooLow;
+
+      }
 
 
+
+
+
+
+
+
+
+  }
+alert('You guessed right!');
+
+})();
 </script>
+
