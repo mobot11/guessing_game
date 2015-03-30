@@ -7,9 +7,11 @@
   var promptText = 'Guess how many hours you\'ve been alive!';
   var tooHigh = 'You guessed too high, guess lower';
   var tooLow = 'You guessed to low, guess higher';
-  var close = 'close, you are within 10 hours';
-  var withinOneHundred = 'You are within one hundred hours';
-  var withinOneThousand = 'You are within one thousand hours';
+  var close = 'close, you are within 10 hours, keep guessing';
+  var withinOneHundredTooLow = 'You are within one hundred hours and too low, keep guessing!';
+  var withinOneHundredTooHigh = 'you are within one hundred hours and too high, keep guessing!';
+  var withinOneThousandTooLow = 'You are within one thousand hours and too low, keep guessing!';
+  var withinOneThousandTooHigh = 'you are within one thousand hours and too high, keep guessing!';
     // console.log(answer);
     while (guess != answer) {
       guess = prompt(promptText);
@@ -17,12 +19,20 @@
           promptText = close;
 
       }
-      else if (Math.abs(guess - answer) <= 100) {
-          promptText = withinOneHundred;
+      else if (guess - answer <= 100) {
+          promptText = withinOneHundredTooLow;
 
       }
-      else if (Math.abs(guess - answer) <= 1000) {
-          promptText = withinOneThousand;
+      else if (guess - answer >= 100) {
+          promptText = withinOneHundredTooHigh;
+
+      }
+      else if (guess - answer <= 1000) {
+          promptText = withinOneThousandTooLow;
+
+      }
+      else if (guess - answer <= 1000) {
+          promptText = withinOneThousandTooHigh;
 
       }
      else if (guess > answer){
