@@ -4,18 +4,22 @@
   (function() {
   var age = prompt('Please enter your age')
   var answer = (age * 8760);
-  var guess = '';
+  var guess = 0;
   var promptText = 'Guess how many hours you\'ve been alive!';
   var tooHigh = 'You guessed too high, guess lower';
   var tooLow = 'You guessed too low, guess higher';
   var close = 'close, you are within 10 hours, guess again!';
   var withinOneHundred = 'You are within one hundred hours, guess again!';
   var withinOneThousand = 'You are within one thousand hours, guess again!';
-  var thanks = 'Thanks for playing!'
+  var thanks = 'Thanks for playing!';
+
     // console.log(answer);
 
     while (guess != answer) {
       guess = prompt(promptText);
+      console.dir(guess);
+
+
       if (guess === null) {
         alert(thanks);
         break;
@@ -41,12 +45,14 @@
         promptText = tooLow;
 
     }
+    console.log(guess + "," + answer);
   }
-
+console.log(guess + ',' + answer);
 if (age === null ) {
   alert(thanks);
 }
-    if (guess === answer) {
+    console.log(guess + ',' + answer);
+    if (guess == answer) {
 alert('You guessed right!');
 }
 
