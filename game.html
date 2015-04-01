@@ -1,9 +1,8 @@
 <script>
 //program that guesses how many hours you've been alive
-  (function() {
-   var age = 'please enter your age!';
-   var askAge = prompt(age);
-  var answer = (askAge * 8760);
+(function() {
+  // var age = 'please enter your age!';
+  // var answer = (askAge * 8760);
   var hourGuess = '';
   var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
   var tooHigh = 'You guessed too high, guess lower';
@@ -13,6 +12,18 @@
   var withinOneThousand = 'You are within one thousand hours, you get 1 more guess!';
   var thanks = 'Thanks for playing!'
   var numGuess = 1;
+  // var askAge = prompt(age);
+  var askAge = function(){
+    age = prompt('please enter your age!')
+    if (age === null) {
+      alert(thanks);
+      return;
+    } else {
+      return (age * 8760);
+    }
+  };
+
+
   var gameOverFunction = function(){
   alert(thanks);
   };
@@ -36,10 +47,13 @@
     promptText = tooLow;
     numGuess += 1;
   };
-if (askAge === null) {
-  gameOverFunction();
-  return;
-}
+
+  answer = askAge();
+
+  if (askAge === null) {
+    gameOverFunction();
+    return;
+  }
     // console.log(answer);
     while (hourGuess !== answer) {
       hourGuess = prompt(promptText);
@@ -47,7 +61,7 @@ if (askAge === null) {
         gameOverFunction();
         break;
        }
-if (Math.abs(hourGuess - answer) <= 10) {
+  if (Math.abs(hourGuess - answer) <= 10) {
           withinTenFunction();
      }  else if (Math.abs(hourGuess - answer) <= 100) {
           withinOneHundredFunction();
@@ -62,7 +76,7 @@ if (Math.abs(hourGuess - answer) <= 10) {
           break;
       }
 
- if (hourGuess == answer) {
+  if (hourGuess == answer) {
       alert('You guessed right!');
       return;
 }
