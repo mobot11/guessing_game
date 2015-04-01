@@ -1,40 +1,5 @@
 <script>
-//program that guesses how many hours you've been alive
-  (function() {
-  // var age = prompt('Please enter your age')
-  // var answer = (age * 8760);
-  // var guess = '';
-  // var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
-  // var tooHigh = 'You guessed too high, guess lower';
-  // var tooLow = 'You guessed too low, guess higher';
-  // var close = 'close, you are within 10 hours, you get 3 more guesses!';
-  // var withinOneHundred = 'You are within one hundred hours, you get 2 more guesses!';
-  // var withinOneThousand = 'You are within one thousand hours, you get 1 more guess!';
-  // var thanks = 'Thanks for playing!'
-  // var numGuess = 0;
-  blah blah blah
-    console.log(answer);
-    while (guess != answer) {
-      guess = prompt(promptText);
-      console.dir(guess);
-      if (guess === null) {
-        alert(thanks);
-        break;
-      } if (Math.abs(guess - answer) <= 10) {
-          promptText = close;
-          numGuess -= 3;
-      } else if (Math.abs(guess - answer) <= 100) {
-          promptText = withinOneHundred;
-          numGuess -= 2;
-      } else if (Math.abs(guess - answer) <= 1000) {
-          promptText = withinOneThousand;
-          numGuess -= 1;
-      } else if (guess > answer){
-        promptText = tooHigh;
-        numGuess += 1;
-      } else if (guess < answer) {
-        promptText = tooLow;
-        numGuess +=1;
+/
       } if (numGuess > 5) {
           alert('You lose mothafucka');
           break;
