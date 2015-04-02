@@ -3,10 +3,12 @@
 (function() {
   // var age = 'please enter your age!';
   // var answer = (askAge * 8760);
-    function Player(age){
+    function Player(age, name){
       this.age = age;
+      this.name = name;
       this.guesses = 5;
       this.guessesUsed = 0;
+      this.score=0;
       this.answer = function(){
       return this.age * 8760;
     };
@@ -22,38 +24,43 @@
 
   var withinTenFunction = function(){
     playerOne.guessesUsed += 3;
-    promptText = "Close, you are within 10 hours, you get 3 more guesses. You have " + playerOne.guessesLeft() + ' guesses left!';
+    playerOne.score +=4
+    promptText = "Close, you are within 10 hours, you get 3 more guesses. You have " + playerOne.guessesLeft() + ' guesses left'  + playerOne.name + " !";
   };
 
   var withinOneHundredFunction = function(){
     playerOne.guessesUsed += 2;
+    playerOne.score += 3
     promptText = 'You are within one hundred hours, you get 2 more guesses. You have ' + playerOne.guessesLeft() + ' guesses left!';
   };
 
   var withinOneThousandFunction = function() {
     playerOne.guessesUsed += 1;
-    promptText = 'You are within one thousand hours, you get 1 more guess. You have ' + playerOne.guessesLeft() + ' guesses left!';
+    playerOne.score += 2
+    promptText = 'You are within one thousand hours, you get 1 more guess. You have ' + playerOne.guessesLeft() + ' guesses left'  + playerOne.name + " !";
   };
 
   var tooHighFunction = function () {
     playerOne.guessesUsed -= 1;
-    promptText = 'You guessed too high, guess lower. You have ' + playerOne.guessesLeft() + ' guesses left!';
+    promptText = 'You guessed too high, guess lower. You have ' + playerOne.guessesLeft() + ' guesses left'  + playerOne.name + " !";
   };
 
   var tooLowFunction = function () {
     playerOne.guessesUsed -= 1;
-    promptText = 'You guessed too low, guess higher. You have ' + playerOne.guessesLeft() + ' guesses left!';
+    promptText = 'You guessed too low, guess higher. You have ' + playerOne.guessesLeft() + ' guesses left'  + playerOne.name + " !";
   };
 
   var hourGuess = '';
 
   var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
 
-  var thanks = 'Thanks for playing!'
+  var thanks = 'Thanks for nothing you jabroni'
 
   var age = prompt('what is your age?');
+  var name = prompt('what is your name?')
+  playerOne.name = name;
 
-  if(age===null){
+  if(age===null || name ===null){
     alert(thanks);
     return;
   }
@@ -81,13 +88,22 @@
         tooLowFunction();
       }
 
-      if (playerOne.guessesLeft() <= 0) {
-          alert('You lost, the answer was ' + playerOne.answer() + ' hours, refresh the page to play again!');
+      if (playerOne.guessesLeft() <= 0 && playerOne.score === 0) {
+          alert(playerOne.name + ', You lost, the answer was ' + playerOne.answer() + ' hours. Your prize is an A for effort. Refresh the page to play again!');
           break;
+      } else if (playerOne.guessesLeft() <=0 && playerOne.score === 2) {
+        alert(playerOne.name + ', You lost, but you were getting closer! your prize is a bronze star, If this was the Olympics, you made the podium!')
+        return;
+      } else if (playerOne.guessesLeft() <=0 && playerOne.score === 3) {
+        alert(playerOne.name + ', You lost, but you were so close! You get a silver star, unfortunately, like Ricky Bobby famously said "If you\'re not First, your Last"')
+        return;
+      } else if (playerOne.guessesLeft()<=0 && playerOne.score >3) {
+        alert(playerOne.name + ', You lost! but you were sooooo close, you get a Gold Star for your Efforts, Refresh to play again and earn the grand prize!')
+        return;
       }
 
       if (hourGuess == playerOne.answer()) {
-        alert('You guessed right!');
+        alert('Congratulations ' + playerOne.name + ' You guessed right! You get a Platinum star!!!!! It has no value but hey, at least all of your time wasn\'t wasted while playing this stupid game!');
         return;
       }
      }
