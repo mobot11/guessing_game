@@ -4,51 +4,63 @@
   // var age = 'please enter your age!';
   // var answer = (askAge * 8760);
     function Player(age){
-    this.age = age;
-    this.guesses = 5;
-    this.guessesUsed = 0;
-    this.answer = function(){
-    return this.age * 8760;
-  };
-  this.guessesLeft = function() {
-    return this.guesses + this.guessesUsed;
-  };
- };
- window.playerOne = new Player();
+      this.age = age;
+      this.guesses = 5;
+      this.guessesUsed = 0;
+      this.answer = function(){
+      return this.age * 8760;
+    };
+      this.guessesLeft = function() {
+      return this.guesses + this.guessesUsed;
+      };
+    };
+  window.playerOne = new Player();
+
   var gameOverFunction = function(){
-  alert(thanks);
+    alert(thanks);
   };
+
   var withinTenFunction = function(){
     playerOne.guessesUsed += 3;
     promptText = "Close, you are within 10 hours, you get 3 more guesses. You have " + playerOne.guessesLeft() + ' guesses left!';
   };
+
   var withinOneHundredFunction = function(){
     playerOne.guessesUsed += 2;
     promptText = 'You are within one hundred hours, you get 2 more guesses. You have ' + playerOne.guessesLeft() + ' guesses left!';
   };
+
   var withinOneThousandFunction = function() {
     playerOne.guessesUsed += 1;
     promptText = 'You are within one thousand hours, you get 1 more guess. You have ' + playerOne.guessesLeft() + ' guesses left!';
   };
+
   var tooHighFunction = function () {
     playerOne.guessesUsed -= 1;
     promptText = 'You guessed too high, guess lower. You have ' + playerOne.guessesLeft() + ' guesses left!';
   };
+
   var tooLowFunction = function () {
     playerOne.guessesUsed -= 1;
     promptText = 'You guessed too low, guess higher. You have ' + playerOne.guessesLeft() + ' guesses left!';
   };
+
   var hourGuess = '';
+
   var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
+
   var thanks = 'Thanks for playing!'
+
   var age = prompt('what is your age?');
+
   if(age===null){
     alert(thanks);
     return;
   }
+
   playerOne.age = age;
     while (hourGuess !== playerOne.answer()) {
-        hourGuess = prompt(promptText);
+      hourGuess = prompt(promptText);
       if (hourGuess === null) {
         gameOverFunction();
         // console.log(playerOne.answer());
@@ -56,19 +68,24 @@
        }
       if (Math.abs(hourGuess - playerOne.answer()) <= 10) {
           withinTenFunction();
-     }  else if (Math.abs(hourGuess - playerOne.answer()) <= 100) {
+      } else if (Math.abs(hourGuess - playerOne.answer()) <= 100) {
           withinOneHundredFunction();
+
       } else if (Math.abs(hourGuess - playerOne.answer()) <= 1000) {
           withinOneThousandFunction();
+
       } else if (hourGuess > playerOne.answer()){
         tooHighFunction();
+
       } else if (hourGuess < playerOne.answer()) {
         tooLowFunction();
       }
+
       if (playerOne.guessesLeft() <= 0) {
           alert('You lost, the answer was ' + playerOne.answer() + ' hours, refresh the page to play again!');
           break;
       }
+
       if (hourGuess == playerOne.answer()) {
         alert('You guessed right!');
         return;
