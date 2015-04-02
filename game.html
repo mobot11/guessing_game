@@ -4,22 +4,17 @@
   // var age = 'please enter your age!';
   // var answer = (askAge * 8760);
     function Player(age){
-    this.age = age;
-    this.guesses = 5;
-    this.guessesUsed = 0;
-    this.answer = function(){
-    return this.age * 8760;
-  };
-  this.guessesLeft = function() {
-    return this.guesses + this.guessesUsed;
-  };
-
- };
- window.playerOne = new Player();
-
-
-
-
+      this.age = age;
+      this.guesses = 5;
+      this.guessesUsed = 0;
+      this.answer = function(){
+        return this.age * 8760;
+      };
+      this.guessesLeft = function() {
+        return this.guesses + this.guessesUsed;
+      };
+    };
+   window.playerOne = new Player();
 
   var gameOverFunction = function(){
   alert(thanks);
