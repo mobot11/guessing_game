@@ -1,0 +1,36 @@
+<script>
+(function(){
+    function Player(age){
+      this.age = age;
+      this.guesses = 5;
+      this.guessesUsed = 0;
+      this.answer = function(){
+      return this.age * 8760;
+    };
+      this.guessesLeft = function() {
+      return this.guesses + this.guessesUsed;
+      };
+    };
+  window.playerOne = new Player();
+var askAgeFunction = function(){
+  agePrompt = prompt('Tell me your age');
+  return Number.parseInt(agePrompt);
+};
+var guessHoursFunction = function(){
+  guessHoursPrompt = prompt('Guess how many hours you have been alive!');
+  return Number.parseInt(guessHoursPrompt);
+
+};
+
+askAgeFunction();
+guessHoursFunction();
+while (playerOne.answer() !== guessHoursFunction()) {
+  if((askAgeFunction() null || undefined)) {
+    alert('thanks for playing');
+   return;
+  }
+}
+
+ })();
+</script>
+
