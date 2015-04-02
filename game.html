@@ -3,7 +3,8 @@
 (function() {
   // var age = 'please enter your age!';
   // var answer = (askAge * 8760);
-    function Player(age){
+    function Player(age, name){
+      this.name = name;
       this.age = age;
       this.guesses = 5;
       this.guessesUsed = 0;
@@ -44,7 +45,8 @@
   var hourGuess = '';
   var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
   var thanks = 'Thanks for playing!'
-  var age = prompt('what is your age?');
+  var name = prompt('hello there! what is your name?')
+  var age = prompt('how old are you? If you don\'t mind me asking');
   if(age===null){
     alert(thanks);
     return;
