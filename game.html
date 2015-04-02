@@ -3,32 +3,28 @@
 (function() {
   // var age = 'please enter your age!';
   // var answer = (askAge * 8760);
-    function Player(age, name){
-      this.name = name;
-      this.age = age;
-      this.guesses = 5;
-      this.guessesUsed = 0;
-      this.answer = function(){
-        return this.age * 8760;
-      };
-      this.guessesLeft = function() {
-        return this.guesses + this.guessesUsed;
-      };
-    };
-   window.playerOne = new Player();
-
+    function Player(age){
+    this.age = age;
+    this.guesses = 5;
+    this.guessesUsed = 0;
+    this.answer = function(){
+    return this.age * 8760;
+  };
+  this.guessesLeft = function() {
+    return this.guesses + this.guessesUsed;
+  };
+ };
+ window.playerOne = new Player();
   var gameOverFunction = function(){
   alert(thanks);
   };
   var withinTenFunction = function(){
     playerOne.guessesUsed += 3;
     promptText = "Close, you are within 10 hours, you get 3 more guesses. You have " + playerOne.guessesLeft() + ' guesses left!';
-
   };
   var withinOneHundredFunction = function(){
     playerOne.guessesUsed += 2;
     promptText = 'You are within one hundred hours, you get 2 more guesses. You have ' + playerOne.guessesLeft() + ' guesses left!';
-
   };
   var withinOneThousandFunction = function() {
     playerOne.guessesUsed += 1;
@@ -45,16 +41,12 @@
   var hourGuess = '';
   var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
   var thanks = 'Thanks for playing!'
-  var name = prompt('hello there! what is your name?')
-  var age = prompt('how old are you? If you don\'t mind me asking');
+  var age = prompt('what is your age?');
   if(age===null){
     alert(thanks);
     return;
   }
   playerOne.age = age;
-
-
-
     while (hourGuess !== playerOne.answer()) {
         hourGuess = prompt(promptText);
       if (hourGuess === null) {
@@ -74,10 +66,9 @@
         tooLowFunction();
       }
       if (playerOne.guessesLeft() <= 0) {
-          alert('You lost, the answer was ' + playerOne.answer() + ' years, refresh the page to play again!');
+          alert('You lost, the answer was ' + playerOne.answer() + ' hours, refresh the page to play again!');
           break;
       }
-
       if (hourGuess == playerOne.answer()) {
         alert('You guessed right!');
         return;
