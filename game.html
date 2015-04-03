@@ -90,15 +90,15 @@
   }
 
 
-    while (hourGuess !== playerOne.answer()) {
-      hourGuess = prompt(promptText);
-      if (hourGuess === null) {
-        gameOverFunction();
-        return;
+  while (hourGuess !== playerOne.answer()) {
+    hourGuess = prompt(promptText);
+    if (hourGuess === null) {
+      gameOverFunction();
+      return;
         // console.log(playerOne.answer());
-       }
-      if (Math.abs(hourGuess - playerOne.answer()) <= 10) {
-          withinTenFunction();
+    }
+    if (Math.abs(hourGuess - playerOne.answer()) <= 10) {
+      withinTenFunction();
       } else if (Math.abs(hourGuess - playerOne.answer()) <= 100) {
           withinOneHundredFunction();
       } else if (Math.abs(hourGuess - playerOne.answer()) <= 1000) {
@@ -109,24 +109,24 @@
         tooLowFunction();
       }
 
-      if (playerOne.guessesLeft() <= 0 && playerOne.score === 0) {
-        lowScore();
-        return;
-      } else if (playerOne.guessesLeft() <=0 && playerOne.score === 2) {
+    if (playerOne.guessesLeft() <= 0 && playerOne.score === 0) {
+      lowScore();
+       return;
+    } else if (playerOne.guessesLeft() <=0 && playerOne.score === 2) {
         bronzeMetal();
         return;
-      } else if (playerOne.guessesLeft() <=0 && playerOne.score === 3) {
+    } else if (playerOne.guessesLeft() <=0 && playerOne.score === 3) {
         silverMetal();
         return;
-      } else if (playerOne.guessesLeft()<=0 && playerOne.score > 3) {
+    } else if (playerOne.guessesLeft()<=0 && playerOne.score > 3) {
         goldMetal();
         return;
       }
 
-      if (hourGuess == playerOne.answer()) {
-        youWon();
-        return;
-      }
-     }
+    if (hourGuess == playerOne.answer()) {
+      youWon();
+      return;
+    }
+  }
 })();
 </script>
