@@ -1,22 +1,25 @@
 <script>
 //program that guesses how many hours you've been alive
 (function() {
-  // var age = 'please enter your age!';
-  // var answer = (askAge * 8760);
-    function Player(age, name){
-      this.age = age;
-      this.name = name;
-      this.guesses = 5;
-      this.guessesUsed = 0;
-      this.score=0;
-      this.answer = function(){
+  var hourGuess = '';
+  var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
+  var thanks = 'Thanks for nothing you jabroni';
+
+  function Player(age, name){
+    this.age = age;
+    this.name = name;
+    this.guesses = 5;
+    this.guessesUsed = 0;
+    this.score=0;
+    this.answer = function(){
       return this.age * 8760;
-    };
-      this.guessesLeft = function() {
+  };
+    this.guessesLeft = function() {
       return this.guesses + this.guessesUsed;
-      };
     };
+  };
   window.playerOne = new Player();
+  playerOne.name = name;
 
   var gameOverFunction = function(){
     alert(thanks);
@@ -50,22 +53,21 @@
     promptText = 'You guessed too low, guess higher. You have ' + playerOne.guessesLeft() + ' guesses left'  + playerOne.name + " !";
   };
 
-  var hourGuess = '';
+  var name = prompt('what is your name?');
 
-  var promptText = 'Guess how many hours you\'ve been alive in 5 guesses!';
-
-  var thanks = 'Thanks for nothing you jabroni'
-
-  var age = prompt('what is your age?');
-  var name = prompt('what is your name?')
-  playerOne.name = name;
-
-  if(age===null || name ===null){
+  if(name===null){
     alert(thanks);
     return;
   }
 
+  var age = prompt('what is your age?');
+
   playerOne.age = age;
+
+  if (age===null) {
+    alert(thanks);
+    return;
+  }
     while (hourGuess !== playerOne.answer()) {
       hourGuess = prompt(promptText);
       if (hourGuess === null) {
@@ -89,16 +91,16 @@
       }
 
       if (playerOne.guessesLeft() <= 0 && playerOne.score === 0) {
-          alert(playerOne.name + ', You lost, the answer was ' + playerOne.answer() + ' hours. Your prize is an A for effort. Refresh the page to play again!');
+          alert(playerOne.name + ' , You lost, the answer was ' + playerOne.answer() + ' hours. Your prize is an A for effort. Refresh the page to play again!');
           break;
       } else if (playerOne.guessesLeft() <=0 && playerOne.score === 2) {
-        alert(playerOne.name + ', You lost, but you were getting closer! your prize is a bronze star, If this was the Olympics, you made the podium!')
+        alert(playerOne.name + ' , You lost, but you were getting closer! your prize is a bronze star, If this was the Olympics, you made the podium!')
         return;
       } else if (playerOne.guessesLeft() <=0 && playerOne.score === 3) {
-        alert(playerOne.name + ', You lost, but you were so close! You get a silver star, unfortunately, like Ricky Bobby famously said "If you\'re not First, your Last"')
+        alert(playerOne.name + ' , You lost, but you were so close! You get a silver star, unfortunately, like Ricky Bobby famously said "If you\'re not First, your Last"')
         return;
-      } else if (playerOne.guessesLeft()<=0 && playerOne.score >3) {
-        alert(playerOne.name + ', You lost! but you were sooooo close, you get a Gold Star for your Efforts, Refresh to play again and earn the grand prize!')
+      } else if (playerOne.guessesLeft()<=0 && playerOne.score > 3) {
+        alert(playerOne.name + ' , You lost! but you were sooooo close, you get a Gold Star for your Efforts, Refresh to play again and earn the grand prize!')
         return;
       }
 
@@ -107,5 +109,5 @@
         return;
       }
      }
- })();
+})();
 </script>
