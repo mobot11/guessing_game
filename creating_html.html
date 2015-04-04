@@ -9,15 +9,18 @@
   <header>
     <h1 id="h1">Guess how many hours you have been alive. The closer you get, the better the prize!</h1>
 </header>
-  <form name="guessing game form">
+    <form onsubmit="return userSubmit();">
     <label for="name">Please Enter your Name!</label>
-    <input type="text" id="name" placeholder="enter your name">
+    <input type="text" id="name" value="" placeholder="enter your name">
     <label for="age">Please Enter your Age!</label>
     <input type="text" id="age" placeholder="enter your age">
     <label for="guess">Guess how many hours you've been alive!</label>
     <input type="text" id="guess" name="guess" placeholder="enter your guess here">
-    <button type="submit">Submit Guess</button>
+    <button type="submit" id="submit">Submit Guess</button>
   </form>
+  <div>
+    <p id="within_10"></p>
+  </div>
   <h2>Hints</h2>
     <table>
       <th colspan='4'>years and hours lived</th>
